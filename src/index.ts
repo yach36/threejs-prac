@@ -31,8 +31,16 @@ const init = () => {
   light.position.set(1, 1, 1); // ライトの方向
   scene.add(light);
 
-  // レンダリング
-  renderer.render(scene, camera);
+  const tick = () => {
+    requestAnimationFrame(tick);
+
+    // 箱を回転させる
+    box.rotation.x += 0.01;
+    box.rotation.y += 0.01;
+    // レンダリング
+    renderer.render(scene, camera);
+  };
+  tick();
 };
 
 window.addEventListener("DOMContentLoaded", init);
